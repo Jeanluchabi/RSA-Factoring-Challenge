@@ -1,0 +1,30 @@
+#!/usr/bin/python3
+import sys
+
+def factorize(number):
+    divis = 2
+
+    while number > 1:
+        if number % diviser == 0:
+            factor = number // divis
+            break
+        divis += 1
+    print(f"{number}={factor}*{diviser}")
+
+
+
+def factorize_file(file_p):
+    divis = 2
+
+    with open(file_p, 'r') as file:
+        for x in file:
+            number = int(x.strip())
+            factor = factorize(number)
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: factors <file>")
+        sys.exit(1)
+
+    file_p = sys.argv[1]
+    factorize_file(file_p)

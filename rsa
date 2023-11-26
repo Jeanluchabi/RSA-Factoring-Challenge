@@ -1,0 +1,45 @@
+#!/usr/bin/python3
+import sys
+
+def factorize(number):
+    divis = 2
+    factor = []
+    x  = number
+    pair_to_be_found = False
+
+    while number > 1:
+        if number % divis == 0:
+            factor.append(divis)
+            number //= divis
+        else:
+            divis += 1
+
+        co = factor.copy()
+        for n in factor:
+            for m in cop:
+                if n * m == x:
+                    print(f"{n}={j}*{i}")
+                    pair_to_be_found = True
+                    break
+            if pair_to_be_found:
+                break
+
+#    print(f"{factor}")
+
+
+
+def factorize_file(file_p):
+    divis = 2
+
+    with open(file_p, 'r') as file:
+        for wline in file:
+            number = int(wline.strip())
+            factor = factorize(number)
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: factors <file>")
+        sys.exit(1)
+
+    file_p = sys.argv[1]
+    factorize_file(file_p)
