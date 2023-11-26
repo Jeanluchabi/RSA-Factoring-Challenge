@@ -5,21 +5,17 @@ def factorize(number):
     divis = 2
 
     while number > 1:
-        if number % diviser == 0:
+        if number % divis == 0:
             factor = number // divis
-            break
+            return factor, divis
         divis += 1
-    print(f"{number}={factor}*{diviser}")
-
-
 
 def factorize_file(file_p):
-    divis = 2
-
     with open(file_p, 'r') as file:
         for x in file:
             number = int(x.strip())
-            factor = factorize(number)
+            factor, divis = factorize(number)
+            print(f"{number}={factor}*{divis}")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -28,3 +24,4 @@ if __name__ == "__main__":
 
     file_p = sys.argv[1]
     factorize_file(file_p)
+
