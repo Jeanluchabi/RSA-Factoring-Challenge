@@ -3,38 +3,30 @@ import sys
 
 def factorize(number):
     divis = 2
-    factor = []
-    x  = number
-    pair_to_be_found = False
+    factors = []
 
     while number > 1:
         if number % divis == 0:
-            factor.append(divis)
+            factors.append(divis)
             number //= divis
         else:
             divis += 1
 
-        co = factor.copy()
-        for n in factor:
-            for m in cop:
-                if n * m == x:
-                    print(f"{n}={j}*{i}")
-                    pair_to_be_found = True
-                    break
-            if pair_to_be_found:
-                break
+    return factors
 
-#    print(f"{factor}")
-
-
+def find_prime_pairs(factors, original_number):
+    for i in range(len(factors)):
+        for j in range(i + 1, len(factors)):
+            if factors[i] * factors[j] == original_number:
+                print(f"{original_number}={factors[i]}*{factors[j]}")
+                return
 
 def factorize_file(file_p):
-    divis = 2
-
     with open(file_p, 'r') as file:
-        for wline in file:
-            number = int(wline.strip())
-            factor = factorize(number)
+        for line in file:
+            number = int(line.strip())
+            factors = factorize(number)
+            find_prime_pairs(factors, number)
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -43,3 +35,4 @@ if __name__ == "__main__":
 
     file_p = sys.argv[1]
     factorize_file(file_p)
+
